@@ -56,7 +56,7 @@ while True:
         break  # No more pages
 
 # Create dataframe
-df = pd.DataFrame({"Title": product_names, "Price": product_price, "Availability": product_availability, "Star Rating": product_ratings, "URL": product_urls, "Category": product_categories})
+df = pd.DataFrame({"Title": product_names, "Price": product_price, "Availability": product_availability, "Star Rating": product_ratings, "URL": product_urls})
 
 # Create csv
 df.to_csv("book_details.csv")
