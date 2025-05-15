@@ -12,8 +12,11 @@ product_availability = []
 product_ratings = []
 product_urls = []
 
+# Define headers (User agent)
+head = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"}
+
 while True:
-    r = requests.get(current_url)
+    r = requests.get(current_url, headers=head)
     soup = BeautifulSoup(r.text, "lxml")
 
     # Find all <h3> elements that contain book titles
@@ -59,7 +62,7 @@ while True:
 df = pd.DataFrame({"Title": product_names, "Price": product_price, "Availability": product_availability, "Star Rating": product_ratings, "URL": product_urls})
 
 # Create csv
-df.to_csv("book_details.csv")
+df.to_csv("book_details.csv", index=False)
 
 # Create JSON
 df.to_json("book_details.json", orient="records", indent=4, force_ascii=False)
